@@ -1,20 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title></title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>GatherIn</title>
+
+    <link rel="stylesheet"
+          href="/css/style.css">
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
 </head>
+
 <body>
-    Chat App
-    
-    <form id="message-form">
-        <input name="message" placeholder="Message">
-        <button>Send</button>
-    </form>
 
+<div class="login-page">
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="/js/chat.js"></script>
+    <div class="background-blur blur-one"></div>
+    <div class="background-blur blur-two"></div>
+
+    <div class="login-card">
+
+        <div class="brand">
+
+            <div class="brand-logo">
+
+                G
+
+            </div>
+
+            <h1>
+
+                GatherIn
+
+            </h1>
+
+            <p>
+
+                Connect • Chat • Collaborate
+
+            </p>
+
+        </div>
+
+        <form action="/chat.html"
+              class="join-form">
+
+            <div class="input-group">
+
+                <label>
+
+                    Display Name
+
+                </label>
+
+                <input
+                    type="text"
+                    name="username"
+                    placeholder="Enter your name"
+                    required>
+
+            </div>
+
+            <div class="input-group">
+
+                <label>
+
+                    Room Name
+
+                </label>
+
+                <input
+                    type="text"
+                    name="room"
+                    placeholder="General"
+                    required>
+
+            </div>
+
+            <button class="join-button">
+
+                Join Conversation →
+
+            </button>
+
+        </form>
+
+        <div class="login-footer">
+
+            Built with ❤️ by <strong>Dev Patel</strong>
+
+        </div>
+
+    </div>
+
+</div>
+
 </body>
+
 </html>
