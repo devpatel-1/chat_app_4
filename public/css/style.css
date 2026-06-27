@@ -1,0 +1,2520 @@
+/* ==========================================================
+   GATHERIN
+   Premium Chat UI
+   Designed by Dev Patel
+   ========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ==========================================================
+   ROOT VARIABLES
+   ========================================================== */
+
+:root{
+
+    --bg:#090b10;
+    --bg2:#111827;
+
+    --sidebar:#111827;
+    --chat:#181f2d;
+
+    --card:#20293b;
+    --card-hover:#293246;
+
+    --primary:#7c5cff;
+    --primary-hover:#6d4df0;
+
+    --success:#22c55e;
+    --danger:#ef4444;
+
+    --text:#ffffff;
+    --muted:#a4afc2;
+
+    --border:#2f394d;
+
+    --radius:18px;
+
+    --shadow:
+    0 20px 45px rgba(0,0,0,.35);
+
+}
+
+/* ==========================================================
+   RESET
+   ========================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    font-family:'Inter',sans-serif;
+
+    background:
+    radial-gradient(circle at top left,#20274d 0%,#0f131d 45%,#07090d 100%);
+
+    color:var(--text);
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   APP LAYOUT
+   ========================================================== */
+
+.app{
+
+    display:grid;
+
+    grid-template-columns:300px 1fr;
+
+    width:100vw;
+
+    height:100vh;
+
+}
+
+/* ==========================================================
+   SIDEBAR
+   ========================================================== */
+
+.sidebar{
+
+    background:rgba(17,24,39,.96);
+
+    backdrop-filter:blur(18px);
+
+    border-right:1px solid var(--border);
+
+    display:flex;
+
+    flex-direction:column;
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   LOGO
+   ========================================================== */
+
+.sidebar-top{
+
+    padding:30px;
+
+    border-bottom:1px solid var(--border);
+
+}
+
+.logo{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+}
+
+.logo-icon{
+
+    width:58px;
+
+    height:58px;
+
+    border-radius:16px;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #9b7bff
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:white;
+
+    box-shadow:
+
+    0 10px 30px rgba(124,92,255,.35);
+
+}
+
+.logo-text h1{
+
+    font-size:26px;
+
+    font-weight:700;
+
+}
+
+.logo-text span{
+
+    color:var(--muted);
+
+    font-size:13px;
+
+    margin-top:4px;
+
+    display:block;
+
+}
+
+/* ==========================================================
+   CHAT CONTAINER
+   ========================================================== */
+
+.chat-container{
+
+    display:flex;
+
+    flex-direction:column;
+
+    background:var(--chat);
+
+    overflow:hidden;
+
+}
+
+/* ==========================================================
+   SIDEBAR CONTENT
+   ========================================================== */
+
+.sidebar-wrapper{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:24px;
+
+}
+
+.sidebar-wrapper::-webkit-scrollbar{
+
+    width:6px;
+
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb{
+
+    background:#39455f;
+
+    border-radius:100px;
+
+}
+
+.sidebar-wrapper::-webkit-scrollbar-thumb:hover{
+
+    background:#55627e;
+
+}
+
+/* ==========================================================
+   SECTION TITLE
+   ========================================================== */
+
+.sidebar-heading{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+    font-weight:700;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+
+}
+
+/* ==========================================================
+   ROOM SECTION
+   ========================================================== */
+
+.room-section{
+
+    margin-bottom:34px;
+
+}
+
+.room-card{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:16px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    padding:18px;
+
+    transition:.30s ease;
+
+    cursor:pointer;
+
+}
+
+.room-card:hover{
+
+    background:var(--card-hover);
+
+    transform:translateY(-4px);
+
+    box-shadow:0 12px 25px rgba(0,0,0,.25);
+
+}
+
+.room-icon{
+
+    width:52px;
+
+    height:52px;
+
+    border-radius:16px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #9476ff
+    );
+
+    color:white;
+
+    font-size:22px;
+
+    font-weight:700;
+
+}
+
+.room-title{
+
+    font-size:18px;
+
+    font-weight:600;
+
+    color:white;
+
+}
+
+.room-subtitle{
+
+    display:block;
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+/* ==========================================================
+   USERS
+   ========================================================== */
+
+.users-section{
+
+    margin-top:10px;
+
+}
+
+.users{
+
+    list-style:none;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:12px;
+
+}
+
+.users li{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    padding:12px 14px;
+
+    border-radius:16px;
+
+    transition:.25s ease;
+
+    cursor:pointer;
+
+}
+
+.users li:hover{
+
+    background:rgba(255,255,255,.05);
+
+    transform:translateX(6px);
+
+}
+
+/* ==========================================================
+   ONLINE INDICATOR
+   ========================================================== */
+
+.online-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+    box-shadow:
+
+    0 0 10px rgba(34,197,94,.8),
+
+    0 0 20px rgba(34,197,94,.4);
+
+}
+
+/* ==========================================================
+   USER AVATAR
+   ========================================================== */
+
+.user-avatar{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #5f8dff
+    );
+
+    color:white;
+
+    font-size:14px;
+
+    font-weight:700;
+
+    flex-shrink:0;
+
+}
+
+.user-name{
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    overflow:hidden;
+
+    white-space:nowrap;
+
+    text-overflow:ellipsis;
+
+}
+
+/* ==========================================================
+   SIDEBAR ANIMATION
+   ========================================================== */
+
+.room-card,
+.users li{
+
+    animation:sidebarFade .45s ease;
+
+}
+
+@keyframes sidebarFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(15px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   ACTIVE USER EFFECT
+   ========================================================== */
+
+.users li:active{
+
+    transform:scale(.98);
+
+}
+
+/* ==========================================================
+   LOGO HOVER
+   ========================================================== */
+
+.logo:hover .logo-icon{
+
+    transform:rotate(-8deg) scale(1.06);
+
+    transition:.35s ease;
+
+}
+
+.logo:hover h1{
+
+    color:#b8a7ff;
+
+    transition:.35s ease;
+
+}
+
+/* ==========================================================
+   CHAT HEADER
+   ========================================================== */
+
+.chat-header{
+
+    height:86px;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 30px;
+
+    background:rgba(24,31,45,.90);
+
+    backdrop-filter:blur(18px);
+
+    border-bottom:1px solid var(--border);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:100;
+
+}
+
+/* ==========================================================
+   LEFT HEADER
+   ========================================================== */
+
+.chat-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:18px;
+
+}
+
+.chat-avatar{
+
+    width:56px;
+
+    height:56px;
+
+    border-radius:18px;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    font-size:24px;
+
+    color:white;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #9b7bff
+    );
+
+    box-shadow:
+    0 10px 30px rgba(124,92,255,.35);
+
+    transition:.35s ease;
+
+}
+
+.chat-avatar:hover{
+
+    transform:rotate(-10deg) scale(1.08);
+
+}
+
+/* ==========================================================
+   HEADER TEXT
+   ========================================================== */
+
+.chat-info{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.chat-info h2{
+
+    font-size:24px;
+
+    font-weight:700;
+
+    color:white;
+
+}
+
+.chat-info p{
+
+    margin-top:4px;
+
+    color:var(--muted);
+
+    font-size:14px;
+
+}
+
+/* ==========================================================
+   CONNECTION STATUS
+   ========================================================== */
+
+.chat-status{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    padding:10px 18px;
+
+    border-radius:50px;
+
+    background:rgba(255,255,255,.05);
+
+    border:1px solid var(--border);
+
+    transition:.30s ease;
+
+}
+
+.chat-status:hover{
+
+    background:rgba(255,255,255,.08);
+
+    transform:translateY(-2px);
+
+}
+
+.status-dot{
+
+    width:10px;
+
+    height:10px;
+
+    border-radius:50%;
+
+    background:var(--success);
+
+    animation:pulse 2s infinite;
+
+}
+
+.status-text{
+
+    font-size:14px;
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   STATUS PULSE
+   ========================================================== */
+
+@keyframes pulse{
+
+    0%{
+
+        transform:scale(1);
+
+        box-shadow:
+        0 0 0 rgba(34,197,94,.7);
+
+    }
+
+    50%{
+
+        transform:scale(1.2);
+
+        box-shadow:
+        0 0 12px rgba(34,197,94,.8);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        box-shadow:
+        0 0 0 rgba(34,197,94,.7);
+
+    }
+
+}
+
+/* ==========================================================
+   CHAT AREA
+   ========================================================== */
+
+#messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    scroll-behavior:smooth;
+
+}
+
+/* ==========================================================
+   SCROLLBAR
+   ========================================================== */
+
+#messages::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#messages::-webkit-scrollbar-track{
+
+    background:transparent;
+
+}
+
+#messages::-webkit-scrollbar-thumb{
+
+    background:#38445f;
+
+    border-radius:100px;
+
+}
+
+#messages::-webkit-scrollbar-thumb:hover{
+
+    background:#56637d;
+
+}
+
+/* ==========================================================
+   EMPTY CHAT
+   ========================================================== */
+
+#messages:empty::before{
+
+    content:"👋 Welcome to GatherIn";
+
+    margin:auto;
+
+    color:#6d7892;
+
+    font-size:22px;
+
+    font-weight:600;
+
+    text-align:center;
+
+}
+
+/* ==========================================================
+   MESSAGES AREA
+   ========================================================== */
+
+#messages{
+
+    flex:1;
+
+    overflow-y:auto;
+
+    padding:30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+    scroll-behavior:smooth;
+
+    background:
+        radial-gradient(circle at top,#1b2332 0%,#181f2d 40%,#161c28 100%);
+
+}
+
+#messages::-webkit-scrollbar{
+
+    width:8px;
+
+}
+
+#messages::-webkit-scrollbar-thumb{
+
+    background:#39455f;
+
+    border-radius:100px;
+
+}
+
+#messages::-webkit-scrollbar-thumb:hover{
+
+    background:#566581;
+
+}
+
+/* ==========================================================
+   MESSAGE
+   ========================================================== */
+
+.message{
+
+    display:flex;
+
+    align-items:flex-start;
+
+    gap:14px;
+
+    animation:messageFade .35s ease;
+
+}
+
+/* ==========================================================
+   AVATAR
+   ========================================================== */
+
+.message-avatar{
+
+    width:46px;
+
+    height:46px;
+
+    min-width:46px;
+
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #5e86ff
+    );
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:white;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    box-shadow:
+
+        0 8px 20px rgba(124,92,255,.35);
+
+}
+
+/* ==========================================================
+   MESSAGE CONTENT
+   ========================================================== */
+
+.message-content{
+
+    display:flex;
+
+    flex-direction:column;
+
+    max-width:70%;
+
+}
+
+/* ==========================================================
+   META
+   ========================================================== */
+
+.message-meta{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:7px;
+
+}
+
+.username{
+
+    color:#ffffff;
+
+    font-size:15px;
+
+    font-weight:600;
+
+}
+
+.time{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+/* ==========================================================
+   BUBBLE
+   ========================================================== */
+
+.message-bubble{
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    padding:14px 18px;
+
+    border-radius:20px;
+
+    line-height:1.65;
+
+    font-size:15px;
+
+    word-break:break-word;
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.18);
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease;
+
+}
+
+.message-bubble:hover{
+
+    transform:translateY(-3px);
+
+    background:var(--card-hover);
+
+    border-color:#4d5c79;
+
+}
+
+/* ==========================================================
+   LINKS
+   ========================================================== */
+
+.message-bubble a{
+
+    color:#8cb4ff;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.message-bubble a:hover{
+
+    text-decoration:underline;
+
+}
+
+/* ==========================================================
+   LOCATION CARD
+   ========================================================== */
+
+.location-card{
+
+    background:linear-gradient(
+        135deg,
+        rgba(124,92,255,.18),
+        rgba(70,120,255,.12)
+    );
+
+}
+
+/* ==========================================================
+   EMPTY CHAT
+   ========================================================== */
+
+#messages:empty{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+#messages:empty::before{
+
+    content:"👋 Welcome to GatherIn — Start your first conversation.";
+
+    color:var(--muted);
+
+    font-size:18px;
+
+    text-align:center;
+
+}
+
+/* ==========================================================
+   MESSAGE ANIMATION
+   ========================================================== */
+
+@keyframes messageFade{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(18px)
+            scale(.96);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   AVATAR HOVER
+   ========================================================== */
+
+.message-avatar{
+
+    transition:
+        transform .3s ease,
+        box-shadow .3s ease;
+
+}
+
+.message-avatar:hover{
+
+    transform:scale(1.08);
+
+    box-shadow:
+
+        0 12px 25px rgba(124,92,255,.5);
+
+}
+
+/* ==========================================================
+   MESSAGE HOVER
+   ========================================================== */
+
+.message:hover .username{
+
+    color:#bfaeff;
+
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:900px){
+
+    #messages{
+
+        padding:18px;
+
+    }
+
+    .message-content{
+
+        max-width:88%;
+
+    }
+
+    .message-avatar{
+
+        width:40px;
+
+        height:40px;
+
+        min-width:40px;
+
+        font-size:13px;
+
+    }
+
+}
+
+/* ==========================================================
+   CHAT FOOTER
+   ========================================================== */
+
+.chat-footer{
+
+    padding:22px 26px;
+
+    background:rgba(24,31,45,.96);
+
+    backdrop-filter:blur(18px);
+
+    border-top:1px solid var(--border);
+
+}
+
+/* ==========================================================
+   MESSAGE FORM
+   ========================================================== */
+
+#message-form{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:14px;
+
+    width:100%;
+
+}
+
+/* ==========================================================
+   INPUT FIELD
+   ========================================================== */
+
+#message-form input{
+
+    flex:1;
+
+    height:58px;
+
+    border:none;
+
+    outline:none;
+
+    padding:0 22px;
+
+    border-radius:999px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    font-size:15px;
+
+    transition:
+        border-color .25s ease,
+        box-shadow .25s ease,
+        transform .25s ease;
+
+}
+
+#message-form input::placeholder{
+
+    color:var(--muted);
+
+}
+
+#message-form input:focus{
+
+    border-color:var(--primary);
+
+    transform:translateY(-1px);
+
+    box-shadow:
+
+        0 0 0 4px rgba(124,92,255,.18),
+
+        0 12px 30px rgba(124,92,255,.18);
+
+}
+
+/* ==========================================================
+   ICON BUTTONS
+   ========================================================== */
+
+.icon-button{
+
+    width:56px;
+
+    height:56px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:50%;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    transition:
+        transform .25s ease,
+        background .25s ease,
+        border-color .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.icon-button:hover{
+
+    transform:translateY(-3px);
+
+    background:var(--card-hover);
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 10px 25px rgba(0,0,0,.25);
+
+}
+
+.icon-button:active{
+
+    transform:scale(.95);
+
+}
+
+/* ==========================================================
+   EMOJI BUTTON
+   ========================================================== */
+
+.emoji-button{
+
+    font-size:24px;
+
+}
+
+.emoji-button:hover{
+
+    transform:
+        translateY(-3px)
+        rotate(-8deg);
+
+}
+
+/* ==========================================================
+   SEND BUTTON
+   ========================================================== */
+
+.send-button{
+
+    width:58px;
+
+    height:58px;
+
+    border:none;
+
+    outline:none;
+
+    border-radius:50%;
+
+    cursor:pointer;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    color:white;
+
+    font-size:22px;
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        #9d82ff
+    );
+
+    box-shadow:
+
+        0 12px 30px rgba(124,92,255,.35);
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+.send-button:hover{
+
+    transform:
+        translateY(-3px)
+        scale(1.05);
+
+    box-shadow:
+
+        0 18px 40px rgba(124,92,255,.5);
+
+}
+
+.send-button:active{
+
+    transform:scale(.95);
+
+}
+
+/* ==========================================================
+   DISABLED BUTTONS
+   ========================================================== */
+
+.send-button:disabled,
+.icon-button:disabled{
+
+    opacity:.55;
+
+    cursor:not-allowed;
+
+    transform:none;
+
+    box-shadow:none;
+
+}
+
+/* ==========================================================
+   FOOTER ANIMATION
+   ========================================================== */
+
+.chat-footer{
+
+    animation:footerUp .45s ease;
+
+}
+
+@keyframes footerUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(25px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ==========================================================
+   CREDIT
+   ========================================================== */
+
+.credit{
+
+    padding:14px;
+
+    border-top:1px solid var(--border);
+
+    text-align:center;
+
+    background:#141b28;
+
+}
+
+.credit span{
+
+    display:block;
+
+    color:var(--primary);
+
+    font-size:16px;
+
+    font-weight:700;
+
+    margin-bottom:6px;
+
+}
+
+.credit p{
+
+    color:var(--muted);
+
+    font-size:12px;
+
+}
+
+.credit strong{
+
+    color:white;
+
+    font-weight:600;
+
+}
+
+/* ==========================================================
+   MOBILE
+   ========================================================== */
+
+@media(max-width:900px){
+
+    .chat-footer{
+
+        padding:16px;
+
+    }
+
+    #message-form{
+
+        gap:10px;
+
+    }
+
+    .icon-button{
+
+        width:48px;
+
+        height:48px;
+
+        font-size:18px;
+
+    }
+
+    .send-button{
+
+        width:50px;
+
+        height:50px;
+
+        font-size:18px;
+
+    }
+
+    #message-form input{
+
+        height:50px;
+
+        font-size:14px;
+
+    }
+
+}
+
+/* ==========================================================
+   GLOBAL TRANSITIONS
+   ========================================================== */
+
+*{
+
+    transition:
+        background-color .25s ease,
+        color .25s ease,
+        border-color .25s ease;
+
+}
+
+/* ==========================================================
+   GLASS EFFECTS
+   ========================================================== */
+
+.sidebar,
+.chat-header,
+.chat-footer{
+
+    backdrop-filter:blur(20px);
+    -webkit-backdrop-filter:blur(20px);
+
+}
+
+/* ==========================================================
+   CHAT CONTAINER SHADOW
+   ========================================================== */
+
+.chat-container{
+
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,.03),
+        0 0 60px rgba(0,0,0,.18);
+
+}
+
+/* ==========================================================
+   SELECTION COLOR
+   ========================================================== */
+
+::selection{
+
+    background:rgba(124,92,255,.45);
+
+    color:white;
+
+}
+
+/* ==========================================================
+   FOCUS STYLES
+   ========================================================== */
+
+button:focus-visible,
+input:focus-visible{
+
+    outline:none;
+
+    box-shadow:
+        0 0 0 4px rgba(124,92,255,.30);
+
+}
+
+/* ==========================================================
+   BUTTON IMPROVEMENTS
+   ========================================================== */
+
+button{
+
+    font-family:inherit;
+
+}
+
+button:hover{
+
+    cursor:pointer;
+
+}
+
+/* ==========================================================
+   USER LIST SCROLL
+   ========================================================== */
+
+.users{
+
+    max-height:calc(100vh - 260px);
+
+    overflow-y:auto;
+
+    padding-right:6px;
+
+}
+
+.users::-webkit-scrollbar{
+
+    width:5px;
+
+}
+
+.users::-webkit-scrollbar-thumb{
+
+    background:#47536d;
+
+    border-radius:100px;
+
+}
+
+.users::-webkit-scrollbar-thumb:hover{
+
+    background:#667590;
+
+}
+
+/* ==========================================================
+   MESSAGE BUBBLE GLOW
+   ========================================================== */
+
+.message-bubble{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.message-bubble::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            transparent,
+
+            rgba(255,255,255,.05),
+
+            transparent
+
+        );
+
+    transform:translateX(-120%);
+
+    transition:transform .7s ease;
+
+}
+
+.message-bubble:hover::before{
+
+    transform:translateX(120%);
+
+}
+
+/* ==========================================================
+   ONLINE DOT ANIMATION
+   ========================================================== */
+
+.online-dot{
+
+    animation:onlineBlink 2.5s infinite;
+
+}
+
+@keyframes onlineBlink{
+
+    0%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+    50%{
+
+        transform:scale(1.35);
+
+        opacity:.7;
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+        opacity:1;
+
+    }
+
+}
+
+/* ==========================================================
+   APP FADE IN
+   ========================================================== */
+
+.app{
+
+    animation:appFade .6s ease;
+
+}
+
+@keyframes appFade{
+
+    from{
+
+        opacity:0;
+
+        transform:scale(.98);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:scale(1);
+
+    }
+
+}
+
+/* ==========================================================
+   CARD HOVER
+   ========================================================== */
+
+.room-card,
+.message-bubble,
+.icon-button,
+.send-button{
+
+    will-change:transform;
+
+}
+
+/* ==========================================================
+   HEADER BORDER GLOW
+   ========================================================== */
+
+.chat-header{
+
+    border-bottom:
+
+        1px solid rgba(255,255,255,.05);
+
+}
+
+/* ==========================================================
+   SIDEBAR BORDER GLOW
+   ========================================================== */
+
+.sidebar{
+
+    border-right:
+
+        1px solid rgba(255,255,255,.05);
+
+}
+
+/* ==========================================================
+   INPUT SHADOW
+   ========================================================== */
+
+#message-form input{
+
+    box-shadow:
+
+        inset 0 1px 1px rgba(255,255,255,.03);
+
+}
+
+/* ==========================================================
+   LOGO ANIMATION
+   ========================================================== */
+
+.logo-icon{
+
+    transition:
+        transform .35s ease,
+        box-shadow .35s ease;
+
+}
+
+.logo:hover .logo-icon{
+
+    transform:
+        rotate(-10deg)
+        scale(1.08);
+
+}
+
+/* ==========================================================
+   STATUS DOT
+   ========================================================== */
+
+.status-dot{
+
+    box-shadow:
+
+        0 0 15px rgba(34,197,94,.8);
+
+}
+
+/* ==========================================================
+   MESSAGE GAP
+   ========================================================== */
+
+.message{
+
+    margin-bottom:6px;
+
+}
+
+/* ==========================================================
+   HOVER LIFT
+   ========================================================== */
+
+.room-card:hover,
+.users li:hover,
+.send-button:hover,
+.icon-button:hover,
+.chat-status:hover{
+
+    filter:brightness(1.05);
+
+}
+
+/* ==========================================================
+   RESPONSIVE
+   ========================================================== */
+
+@media(max-width:1100px){
+
+    .app{
+
+        grid-template-columns:250px 1fr;
+
+    }
+
+}
+
+@media(max-width:900px){
+
+    .app{
+
+        grid-template-columns:1fr;
+
+    }
+
+    .sidebar{
+
+        display:none;
+
+    }
+
+    .chat-container{
+
+        width:100%;
+
+    }
+
+}
+
+@media(max-width:600px){
+
+    .chat-header{
+
+        padding:14px;
+
+    }
+
+    #messages{
+
+        padding:14px;
+
+    }
+
+    .chat-footer{
+
+        padding:14px;
+
+    }
+
+}
+
+/* ==========================================================
+   PART 7 - FINAL POLISH
+   ========================================================== */
+
+/* ---------- Smooth UI ---------- */
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    text-rendering:optimizeLegibility;
+}
+
+/* ---------- Disable image drag ---------- */
+
+img{
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
+/* ---------- Links ---------- */
+
+a{
+    text-decoration:none;
+}
+
+/* ---------- Input Caret ---------- */
+
+input{
+    caret-color:var(--primary);
+}
+
+/* ---------- Placeholder ---------- */
+
+::placeholder{
+    color:#7f8ca8;
+}
+
+/* ---------- Better Bubble Shadow ---------- */
+
+.message-bubble{
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,.18),
+        inset 0 1px 0 rgba(255,255,255,.03);
+
+}
+
+/* ---------- Glass Card ---------- */
+
+.room-card,
+.chat-status{
+
+    backdrop-filter:blur(15px);
+
+}
+
+/* ---------- User Avatar ---------- */
+
+.user-avatar{
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+}
+
+/* ---------- Message Avatar ---------- */
+
+.message-avatar{
+
+    letter-spacing:.5px;
+
+    text-transform:uppercase;
+
+}
+
+/* ---------- Active Button ---------- */
+
+.send-button:active,
+.icon-button:active{
+
+    transform:scale(.92);
+
+}
+
+/* ---------- Input Hover ---------- */
+
+#message-form input:hover{
+
+    border-color:#55627c;
+
+}
+
+/* ---------- Sidebar Hover ---------- */
+
+.users li{
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.users li::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:-100%;
+
+    top:0;
+
+    width:100%;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.05),
+            transparent
+        );
+
+    transition:.6s;
+
+}
+
+.users li:hover::after{
+
+    left:120%;
+
+}
+
+/* ---------- Bubble Animation ---------- */
+
+.message-bubble{
+
+    animation:bubbleAppear .35s ease;
+
+}
+
+@keyframes bubbleAppear{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            scale(.95)
+            translateY(10px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            scale(1)
+            translateY(0);
+
+    }
+
+}
+
+/* ---------- Floating Effect ---------- */
+
+.room-card,
+.chat-status,
+.message-bubble{
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+/* ---------- Credit ---------- */
+
+.credit{
+
+    user-select:none;
+
+    letter-spacing:.4px;
+
+}
+
+.credit strong{
+
+    color:#ffffff;
+
+}
+
+.credit span{
+
+    background:
+        linear-gradient(
+            90deg,
+            #7c5cff,
+            #5d8dff
+        );
+
+    background-clip:text;
+
+    -webkit-background-clip:text;
+
+    color:transparent;
+
+    -webkit-text-fill-color:transparent;
+
+}
+
+/* ---------- Selection ---------- */
+
+::selection{
+
+    background:#7c5cff;
+
+    color:white;
+
+}
+
+/* ---------- Firefox ---------- */
+
+*{
+
+    scrollbar-width:thin;
+
+    scrollbar-color:#47536d transparent;
+
+}
+
+/* ---------- Responsive ---------- */
+
+@media(max-width:768px){
+
+    .chat-info p{
+
+        display:none;
+
+    }
+
+    .message-content{
+
+        max-width:100%;
+
+    }
+
+    .message{
+
+        gap:10px;
+
+    }
+
+}
+
+@media(max-width:520px){
+
+    .chat-avatar{
+
+        width:44px;
+        height:44px;
+
+        font-size:18px;
+
+    }
+
+    .logo-icon{
+
+        width:46px;
+        height:46px;
+
+        font-size:20px;
+
+    }
+
+    .logo-text h1{
+
+        font-size:20px;
+
+    }
+
+    .send-button{
+
+        width:46px;
+        height:46px;
+
+        font-size:18px;
+
+    }
+
+    .icon-button{
+
+        width:44px;
+        height:44px;
+
+        font-size:18px;
+
+    }
+
+}
+
+/* ==========================================================
+END OF GATHERIN CSS
+   ========================================================== */
+
+/* ==========================================================
+   LOGIN PAGE
+   ========================================================== */
+
+.login-page{
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+    background:
+        radial-gradient(circle at top left,#232c56 0%,#121827 45%,#090b10 100%);
+
+}
+
+/* Background */
+
+.background-blur{
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    border-radius:50%;
+
+    filter:blur(120px);
+
+    opacity:.45;
+
+}
+
+.blur-one{
+
+    top:-120px;
+    left:-120px;
+
+    background:#7c5cff;
+
+}
+
+.blur-two{
+
+    right:-120px;
+    bottom:-120px;
+
+    background:#00c2ff;
+
+}
+
+/* Card */
+
+.login-card{
+
+    width:430px;
+
+    padding:45px;
+
+    border-radius:28px;
+
+    background:rgba(24,31,45,.88);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    backdrop-filter:blur(25px);
+
+    box-shadow:
+
+        0 30px 80px rgba(0,0,0,.45);
+
+    z-index:5;
+
+}
+
+/* Brand */
+
+.brand{
+
+    text-align:center;
+
+    margin-bottom:35px;
+
+}
+
+.brand-logo{
+
+    width:82px;
+    height:82px;
+
+    margin:auto;
+
+    border-radius:22px;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #5f8dff
+    );
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-size:34px;
+
+    font-weight:700;
+
+    margin-bottom:18px;
+
+}
+
+.brand h1{
+
+    font-size:34px;
+
+    margin-bottom:8px;
+
+}
+
+.brand p{
+
+    color:var(--muted);
+
+}
+
+/* Form */
+
+.join-form{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:22px;
+
+}
+
+.input-group{
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+.input-group label{
+
+    margin-bottom:10px;
+
+    color:#d7dce7;
+
+    font-size:14px;
+
+}
+
+.input-group input{
+
+    height:56px;
+
+    border:none;
+
+    outline:none;
+
+    padding:0 20px;
+
+    border-radius:16px;
+
+    background:var(--card);
+
+    border:1px solid var(--border);
+
+    color:white;
+
+    font-size:15px;
+
+}
+
+.input-group input:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:
+
+        0 0 0 4px rgba(124,92,255,.18);
+
+}
+
+/* Join Button */
+
+.join-button{
+
+    height:58px;
+
+    border:none;
+
+    border-radius:18px;
+
+    margin-top:10px;
+
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #5d8dff
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.join-button:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+
+        0 18px 35px rgba(124,92,255,.35);
+
+}
+
+/* Footer */
+
+.login-footer{
+
+    margin-top:28px;
+
+    text-align:center;
+
+    color:var(--muted);
+
+    font-size:13px;
+
+}
+
+.login-footer strong{
+
+    color:white;
+
+}
+
+/* Mobile */
+
+@media(max-width:520px){
+
+    .login-card{
+
+        width:92%;
+
+        padding:30px;
+
+    }
+
+}
+
+/* =====================================
+   MY MESSAGES
+===================================== */
+
+.my-message{
+    align-self:flex-end;
+    flex-direction:row-reverse;
+    justify-content:flex-start;
+}
+
+.my-message .message-content{
+    align-items:flex-end;
+}
+
+.my-message .message-meta{
+    justify-content:flex-end;
+    text-align:right;
+}
+
+.my-message .message-bubble{
+    background:linear-gradient(
+        135deg,
+        #7c5cff,
+        #5d8dff
+    );
+
+    border:none;
+    color:white;
+}
+
+.my-message .message-avatar{
+    background:linear-gradient(
+        135deg,
+        #22c55e,
+        #16a34a
+    );
+}
