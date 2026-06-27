@@ -1,4 +1,4 @@
-const socket = io()
+const socket = io('https://gatherin-backend.onrender.com/')
 
 // Elements
 const $messageForm = document.querySelector('#message-form')
