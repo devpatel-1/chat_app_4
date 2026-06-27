@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GatherIn</title>
+
+    <link rel="stylesheet" href="/css/style.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ===================== -->
+    <!-- SIDEBAR -->
+    <!-- ===================== -->
+
+    <aside id="sidebar" class="sidebar">
+
+        <div class="sidebar-top">
+
+            <div class="logo">
+
+                <div class="logo-icon">
+                    G
+                </div>
+
+                <div class="logo-text">
+
+                    <h1>GatherIn</h1>
+
+                    <span>Connect • Chat • Collaborate</span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- This will be replaced by Mustache -->
+    </aside>
+
+
+
+
+
+    <!-- ===================== -->
+    <!-- CHAT AREA -->
+    <!-- ===================== -->
+
+    <main class="chat-container">
+
+        <!-- HEADER -->
+
+        <header class="chat-header">
+
+            <div class="chat-left">
+
+                <div class="chat-avatar">
+                    💬
+                </div>
+
+                <div class="chat-info">
+
+                    <h2>GatherIn</h2>
+
+                    <p>Real-time Conversations</p>
+
+                </div>
+
+            </div>
+
+            <div class="chat-status">
+
+                <span class="status-dot"></span>
+
+                <span class="status-text">
+                    Connected
+                </span>
+
+            </div>
+
+        </header>
+
+
+
+
+
+        <!-- ===================== -->
+        <!-- MESSAGES -->
+        <!-- ===================== -->
+
+        <section id="messages">
+
+        </section>
+
+
+
+
+
+        <!-- ===================== -->
+        <!-- FOOTER -->
+        <!-- ===================== -->
+
+<footer class="chat-footer">
+
+    <form id="message-form">
+
+        <button
+            type="button"
+            class="icon-button emoji-button">
+
+            😊
+
+        </button>
+
+        <input
+            type="text"
+            name="message"
+            placeholder="Type your message..."
+            autocomplete="off"
+            required>
+
+        <button
+            id="send-location"
+            type="button"
+            class="icon-button">
+
+            📍
+
+        </button>
+
+        <button
+            id="send-message"
+            class="send-button">
+
+            ➜
+
+        </button>
+
+    </form>
+
+</footer>
+
+        
+
+
+
+
+
+        <!-- ===================== -->
+        <!-- FOOTER CREDIT -->
+        <!-- ===================== -->
+
+        <div class="credit">
+
+            <span>GatherIn</span>
+
+            <p>
+
+                Designed & Developed by
+
+                <strong>Dev Patel</strong>
+
+            </p>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+
+
+
+<!-- ===================================== -->
+<!-- MUSTACHE TEMPLATES -->
+<!-- ===================================== -->
+<script id="message-template" type="text/html">
+
+<div class="message {{#isMe}}my-message{{/isMe}}">
+
+    <div class="message-avatar">
+        {{avatar}}
+    </div>
+
+    <div class="message-content">
+
+        <div class="message-meta">
+
+            <span class="username">
+                {{username}}
+            </span>
+
+            <span class="time">
+                {{createdAt}}
+            </span>
+
+        </div>
+
+        <div class="message-bubble">
+
+            <p>{{message}}</p>
+
+        </div>
+
+    </div>
+
+</div>
+
+</script>
+
+
+
+
+<script id="location-message-template" type="text/html">
+
+<div class="message {{#isMe}}my-message{{/isMe}}">
+
+    <div class="message-avatar">
+        {{avatar}}
+    </div>
+
+    <div class="message-content">
+
+        <div class="message-meta">
+
+            <span class="username">
+                {{username}}
+            </span>
+
+            <span class="time">
+                {{createdAt}}
+            </span>
+
+        </div>
+
+        <div class="message-bubble location-card">
+
+            <a href="{{url}}" target="_blank">
+                📍 Open My Location
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</script>
+
+
+
+
+<script id="sidebar-template" type="text/html">
+
+<div class="sidebar-wrapper">
+
+    <div class="room-section">
+
+        <p class="sidebar-heading">
+
+            ROOM
+
+        </p>
+
+        <div class="room-card">
+
+            <div class="room-icon">
+
+                #
+
+            </div>
+
+            <div>
+
+                <h3 class="room-title">
+
+                    {{room}}
+
+                </h3>
+
+                <span class="room-subtitle">
+
+                    Active Room
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="users-section">
+
+        <p class="sidebar-heading">
+
+            ONLINE USERS
+
+        </p>
+
+        <ul class="users">
+
+            {{#users}}
+
+        <li>
+                <span class="online-dot"></span>
+
+                <span class="user-avatar">
+                    {{avatar}}
+                </span>
+
+                <span class="user-name">
+                    {{username}}
+                </span>
+        </li>
+
+            {{/users}}
+
+        </ul>
+
+    </div>
+
+</div>
+
+</script>
+
+
+
+
+
+<!-- Libraries -->
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.1/mustache.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.22.2/moment.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.6.0/qs.min.js"></script>
+
+<script src="https://cdn.socket.io/4.8.1/socket.io.min.js"></script>
+
+<script src="/js/chat.js"></script>
+
+</body>
+
+</html>
